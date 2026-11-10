@@ -348,4 +348,4 @@ superseded by `docs/RESEARCH-DOCUMENT.md`.
 
 ## License
 
-MIT. See `LICENSE`.
+AGPL-3.0-only / GNU Affero General Public License v3.0. See `LICENSE`.
