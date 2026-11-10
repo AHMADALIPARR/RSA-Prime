@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-only
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, version 3.
+# See the LICENSE file.
+
 """Summarise one or more benchmark JSON files written by the harness.
 
 Usage: scripts/summarize-bench.py RUN1.json [RUN2.json ...]

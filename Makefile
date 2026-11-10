@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: AGPL-3.0-only
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, version 3.
+# See the LICENSE file.
+
 # RSA-CRYPTANALYSIS-OMEGA - build, test and benchmark entry points.
 # FACTOR_BIN must point at a Factor 0.102 VM binary (the image must sit
 # next to it). Lean 4.35.0 / Lake are found on PATH or in ~/.elan/bin.

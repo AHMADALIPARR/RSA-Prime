@@ -1,3 +1,9 @@
+! SPDX-License-Identifier: AGPL-3.0-only
+! This program is free software: you can redistribute it and/or modify
+! it under the terms of the GNU Affero General Public License as published by
+! the Free Software Foundation, version 3.
+! See the LICENSE file.
+
 ! Unit tests for the research-document conformance vocabulary.
 ! These assert mathematically correct engine values for the concrete
 ! numbers in research/RSA-OMEGA-RESEARCH.md, and pin the exact set of
