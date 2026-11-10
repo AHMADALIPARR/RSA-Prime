@@ -7,7 +7,7 @@
 
 # Same nine engine vocabularies as scripts/run-tests.sh (unchanged), but
 # exits non-zero if any unit test fails. run-tests.sh prints every test and
-# always exits 0, so CI and `make test` use this wrapper.
+# always exits 0, so `make test` uses this wrapper.
 set -euo pipefail
 FACTOR_BIN="${FACTOR_BIN:-/home/box/factor/factor/factor}"
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
