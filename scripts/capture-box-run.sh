@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: AGPL-3.0-only
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, version 3.
+# See the LICENSE file.
+
 # Runs every check in this repository and captures the raw output, the
 # exit code and the wall time of each step into results/box-run/.
 # Nothing in results/ outside results/box-run/ is touched (those are the

@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: AGPL-3.0-only
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, version 3.
+# See the LICENSE file.
+
 # Runs the unchanged benchmark harness (rsa-omega.harness) but writes the
 # JSON inside this repository. harness-main in harness.factor hard-codes
 # /workspace/rsa-omega/results/results.json, so this wrapper calls the

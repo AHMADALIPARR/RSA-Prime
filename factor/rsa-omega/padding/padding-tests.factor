@@ -1,3 +1,9 @@
+! SPDX-License-Identifier: AGPL-3.0-only
+! This program is free software: you can redistribute it and/or modify
+! it under the terms of the GNU Affero General Public License as published by
+! the Free Software Foundation, version 3.
+! See the LICENSE file.
+
 USING: byte-arrays continuations kernel math sequences tools.test
        rsa-omega.padding ;
 IN: rsa-omega.padding.tests
