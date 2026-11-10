@@ -42,7 +42,8 @@ documentation: `README.md`, `CHANGELOG.md`, `LICENSE`, `Makefile`,
 `scripts/run-research-tests.sh`, `scripts/run-research-report.sh`,
 `scripts/run-bench-repo.sh`, `scripts/capture-box-run.sh`,
 `scripts/summarize-bench.py`, `tests/factor/rsa-omega/research/*`,
-`tests/lean/*`, and `results/box-run/*`.
+`tests/lean/*`, `bqn/*`, `j/*`, `scripts/require-tool.sh`,
+`scripts/run-array-langs.sh`, and `results/box-run/*`.
 
 ## Fresh results do not overwrite the original results
 

@@ -11,6 +11,9 @@
 set -euo pipefail
 FACTOR_BIN="${FACTOR_BIN:-/home/box/factor/factor/factor}"
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
+# shellcheck source=require-tool.sh
+source "$REPO/scripts/require-tool.sh"
+require_tool factor "$FACTOR_BIN"
 OUT="${1:-$REPO/results/box-run/research-claims.json}"
 mkdir -p "$(dirname "$OUT")"
 "$FACTOR_BIN" -roots="$REPO/factor:$REPO/tests/factor" -e="

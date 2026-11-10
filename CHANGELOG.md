@@ -9,7 +9,8 @@ edited; all 37 preserved files are verified by `MANIFEST.sha256`.
 - `research/RSA-OMEGA-RESEARCH.md`: the author's research document, verbatim.
 - `tests/factor/rsa-omega/research/`: vocabulary `rsa-omega.research`, 180
   checks of the concrete claims in the research document against the engine,
-  plus 40 unit tests.
+  plus 38 unit tests. The author's BQN and J programs are in `bqn/` and `j/`
+  and are run by CBQN and J, not reimplemented in Factor.
 - `tests/lean/`: Lake package `rsa-omega-research` (depends on `lean/`),
   kernel-checked `decide` proofs of the document's numbers and its errata.
 - `scripts/run-unit-tests-strict.sh`: the nine engine test vocabularies,

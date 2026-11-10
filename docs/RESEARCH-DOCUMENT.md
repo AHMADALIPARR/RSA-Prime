@@ -12,9 +12,12 @@ from the task brief. That note is now out of date:
   listed in `MANIFEST.sha256` and checked by `make verify` and by CI.
 * `SPEC.md` and `SPEC-original.txt` are kept unchanged as the
   implementation brief the engine was written against.
-* Every concrete numeric claim we could extract from the research
-  document (180 checks) is now tested against the engine. The results
-  and the 11 disagreements are in `docs/RESEARCH-CONFORMANCE.md`.
+* The numeric claims that are not the BQN or J programs (154 checks)
+  are tested against the Factor engine. The 8 disagreements are in
+  `docs/RESEARCH-CONFORMANCE.md`.
+* The author's BQN and J programs are extracted verbatim into `bqn/` and
+  `j/` and run with CBQN and J. Logs are in `results/box-run/bqn/` and
+  `results/box-run/j/`. They are not reimplemented in Factor.
 
 The original README text is not edited. The root `README.md` replaces it
 as the entry point.

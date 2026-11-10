@@ -9,25 +9,40 @@
 # exit code and the wall time of each step into results/box-run/.
 # Nothing in results/ outside results/box-run/ is touched (those are the
 # original files from the upload and are kept byte-identical).
-set -uo pipefail
+set -u
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 OUT="$REPO/results/box-run"
 FACTOR_BIN="${FACTOR_BIN:-/home/box/factor/factor/factor}"
 export FACTOR_BIN
 export PATH="$HOME/.elan/bin:$PATH"
+# shellcheck source=require-tool.sh
+source "$REPO/scripts/require-tool.sh"
+require_tool factor "$FACTOR_BIN"
+require_tool lean lean
+require_tool lake lake
+require_tool BQN BQN
+require_tool jconsole jconsole
+require_tool python3 python3
+set -euo pipefail
 mkdir -p "$OUT"
 printf 'step\texit_code\twall_ms\n' > "$OUT/steps.tsv"
+step_fail=0
 
 step() {
     local name="$1"; shift
     local log="$OUT/$name.txt"
     local t0 t1 rc
     t0=$(date +%s%N)
+    set +e
     ( cd "$REPO" && "$@" ) > "$log" 2>&1
     rc=$?
+    set -e
     t1=$(date +%s%N)
     printf '%s\t%s\t%s\n' "$name" "$rc" "$(( (t1 - t0) / 1000000 ))" >> "$OUT/steps.tsv"
     echo "$name: exit $rc, $(( (t1 - t0) / 1000000 )) ms"
+    if [[ "$rc" -ne 0 ]]; then
+        step_fail=1
+    fi
 }
 
 {
@@ -57,4 +72,6 @@ python3 "$REPO/scripts/summarize-bench.py" "$OUT/results.json" \
 step smoke             "$FACTOR_BIN" -roots="$REPO/factor" -run=rsa-omega.smoke
 step lake-build        bash -c 'cd lean && rm -rf .lake && lake build'
 step lake-build-research bash -c 'cd tests/lean && rm -rf .lake && lake build'
+step array-langs       ./scripts/run-array-langs.sh
 echo "wrote $OUT"
+exit "$step_fail"
