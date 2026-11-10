@@ -67,7 +67,8 @@ This is a research and teaching toolkit. Its rules:
 | `SPEC.md`, `SPEC-original.txt` | implementation brief (sections 1-9) | original, unchanged |
 | `docs/README-original.md` | the README from the upload | original, moved only |
 | `research/RSA-OMEGA-RESEARCH.md` | the author's research document | original, verbatim |
-| `tests/factor/rsa-omega/research/` | vocab `rsa-omega.research`: 180 claim checks and 40 unit tests | new |
+| `tests/factor/rsa-omega/research/` | vocab `rsa-omega.research`: 154 claim checks and 38 unit tests | new |
+| `bqn/`, `j/` | the author's BQN and J programs, verbatim from the research document | new |
 | `tests/lean/` | Lake package `rsa-omega-research`: kernel-checked proofs of the document's numbers | new |
 | `scripts/run-unit-tests-strict.sh` | the 9 engine test vocabularies; exits 1 on any failure | new |
 | `scripts/run-research-tests.sh` / `run-research-report.sh` | conformance tests / claim report (text and JSON) | new |
@@ -88,8 +89,14 @@ This is a research and teaching toolkit. Its rules:
   prime-factor tool, which is a different program.
 * **Lean 4.35.0 and Lake**, installed with `elan`. Both `lean-toolchain`
   files pin `leanprover/lean4:v4.35.0`. Neither package needs Mathlib.
-* `bash`, `sha256sum` and `python3` for the wrapper scripts. `make` is
-  optional, since every target is a single script call.
+* **CBQN** (`BQN` on `PATH`) and **J9** (`jconsole` on `PATH`) to run
+  `bqn/*.bqn` and `j/*.ijs`. `make array` and `scripts/run-array-langs.sh`
+  exit with `missing BQN` or `missing jconsole` when either binary is
+  absent. They do not substitute Factor.
+* `bash`, `sha256sum`, `timeout` and `python3` for the wrapper scripts.
+  `make` is optional for the Factor and Lean targets, since each of those
+  is a single script or `lake` call. A missing `factor`, `lean` or `lake`
+  binary fails with `missing factor`, `missing lean` or `missing lake`.
 
 ## Quick start
 
@@ -186,18 +193,22 @@ All vocabularies live under `factor/rsa-omega/` and load with
 | The n = 65537^2 counterexample | `perfect-power`, `totient-from-factors`, `carmichael-from-factors`, `check-rsa-key` (p-ne-q) | P.* (22) |
 | Complexity tables | asymptotic statements only; not numerically testable | none |
 | Attention and softmax gradients, finite-difference bounds | new FP64 code in `rsa-omega.research` (softmax, attention forward and backward, central differences, FP32 rounding) | F.* (14) |
-| Newton-Schulz recursive consistency (the J kernel) | exact-rational re-implementation of T_{n+1} = T_n(2I - A T_n) | N.* (17) |
-| BQN Möbius-bridge N = 15 script | `totient-from-factors`, `carmichael-pq`, `mod-inverse` | B.* (9) |
+| J Newton-Schulz program | `j/newton-schulz.ijs` and `j/newton-schulz-expression.ijs`, run by `jconsole` | `results/box-run/j/` |
+| BQN fused kernel and Möbius-bridge program | `bqn/fused-kernel.bqn` and `bqn/mobius-bridge.bqn`, run by CBQN (`BQN`) | `results/box-run/bqn/` |
 
-The BQN and J programs in the document are not executed, because neither
-interpreter is on the build machine. Their concrete numeric outputs are
-reproduced in Factor instead.
+The BQN and J sources are the author's programs, copied verbatim out of
+`research/RSA-OMEGA-RESEARCH.md`. `scripts/run-array-langs.sh` runs each
+one with CBQN and J. It does not reimplement them in Factor. If `BQN` or
+`jconsole` is not on `PATH`, that script exits with `missing BQN` or
+`missing jconsole`.
 
 ### Research claims that failed
 
-Eleven printed values do not match the arithmetic. They are explained in
-detail in `docs/RESEARCH-CONFORMANCE.md`, and the document itself is not
-changed.
+Eight printed values in the Factor-checked sections do not match the
+arithmetic. They are explained in `docs/RESEARCH-CONFORMANCE.md`. The
+document itself is not changed. The J and BQN programs are not part of
+that Factor check; their interpreter logs are under `results/box-run/j/`
+and `results/box-run/bqn/`.
 
 * **n = 65537^2.** phi(p^2) = lambda(p^2) = p(p - 1) = **4295032832**.
   The table and proof print 4294967296, which is 65536^2. The
@@ -208,13 +219,6 @@ changed.
   1655333588. The true inverse is d = 1431677611, and it decrypts
   correctly. The document's main point, that p = q violates the RSA
   precondition, is right, and the engine's `check-rsa-key` rejects the key.
-* **Newton-Schulz.** The first "T5 ~ [[0.297, -0.093], [-0.194, 0.386]]"
-  is off at 3 d.p. (the exact T5 is [[0.29980, -0.09977], [-0.19968,
-  0.39962]]; the document's later 8-d.p. matrix is correct). Iteration
-  table row 0 (1.118034) does not match ||E_0||_F = 0.866025. Rows 1-5
-  do match.
-* **BQN θ.** arctan(7/sqrt 15) is 1.06544 rad, not ~1.062.
-
 Two claims are printed truncated rather than rounded (sqrt 10403 ~ 101.99
 and 3.6e-11) and are accepted as truncations. One part of the document
 moves from unresolved to measured: the attention-gradient finite-difference

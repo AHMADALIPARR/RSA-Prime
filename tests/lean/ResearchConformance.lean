@@ -144,7 +144,9 @@ theorem erratum_d : 3 * 2863311531 % 4295032832 ≠ 1 := by decide
 /-- The true inverse of 3 modulo lambda(65537^2) = 4295032832. -/
 theorem p2_true_d : 3 * 1431677611 % 4295032832 = 1 := by decide
 
-/-! ## BQN section, N = 15 -/
+/-! ## Arithmetic printed beside the BQN N = 15 program.
+    The program itself is bqn/mobius-bridge.bqn and is run by CBQN,
+    not by these proofs. -/
 
 theorem units_15 :
     (List.range 15).filter (fun x => Nat.gcd x 15 == 1) = [1, 2, 4, 7, 8, 11, 13, 14] := by

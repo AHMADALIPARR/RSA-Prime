@@ -10,6 +10,9 @@
 set -euo pipefail
 FACTOR_BIN="${FACTOR_BIN:-/home/box/factor/factor/factor}"
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
+# shellcheck source=require-tool.sh
+source "$REPO/scripts/require-tool.sh"
+require_tool factor "$FACTOR_BIN"
 "$FACTOR_BIN" -roots="$REPO/factor:$REPO/tests/factor" -e='
 USING: io kernel namespaces sequences system tools.test vocabs.loader ;
 "rsa-omega.research" require "rsa-omega.research" test

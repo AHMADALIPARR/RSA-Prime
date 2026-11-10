@@ -54,14 +54,6 @@ IN: rsa-omega.research.tests
 { 42 } [ 42 3 4295098369 modexp 1431677611 4295098369 modexp ] unit-test
 { f } [ 42 3 4295098369 modexp 2863311531 4295098369 modexp 42 = ] unit-test
 
-! ---- Newton-Schulz, exact rationals ----
-{ { { 3/20 -11/20 } { -11/20 7/20 } } } [ ns-iterates first ns-residual ] unit-test
-{ t } [
-    ns-iterates last mfloat
-    { { 0.29980453 -0.09976578 } { -0.19968372 0.39962103 } }
-    [ [ - abs ] 2map supremum ] 2map supremum 0.000000005 <=
-] unit-test
-
 ! ---- floating point ----
 { 0.0 } [ { 100.0 -100.0 } softmax-row second f32 ] unit-test
 { t } [ 0.0 1/0. * fp-nan? ] unit-test
@@ -69,11 +61,11 @@ IN: rsa-omega.research.tests
 { t } [ matmul-fd-delta 1e-6 <= ] unit-test
 { t } [ jacobian-vjp-delta 1e-15 <= ] unit-test
 
-! ---- the full claim set: 180 claims, these 11 disagree with the doc ----
-{ 180 } [ run-research-checks length ] unit-test
+! ---- the full claim set: 154 claims, these 8 disagree with the doc ----
+! The J Newton-Schulz program and the BQN programs are not checked here.
+{ 154 } [ run-research-checks length ] unit-test
 {
     {
         "P.06" "P.07" "P.08" "P.09" "P.10" "P.14" "P.15" "P.16"
-        "N.10" "N.12.0" "B.09"
     }
 } [ failing-claim-ids ] unit-test

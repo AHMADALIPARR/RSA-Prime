@@ -204,63 +204,6 @@ CONSTANT: doc-table {
         n 3 3 lam mod-inverse p p check-rsa-key p-ne-q>> exact ;
 
 ! ------------------------------------------------------------------
-! Newton-Schulz inversion section (exact rational arithmetic)
-! ------------------------------------------------------------------
-CONSTANT: ns-A { { 4 1 } { 2 3 } }
-
-: identity2 ( -- I ) 2 <identity-matrix> ;
-
-:: ns-step ( T -- T' )
-    T 2 identity2 n*m ns-A T mdot m- mdot ;
-
-:: ns-residual ( T -- E )
-    identity2 ns-A T mdot m- ;
-
-:: ns-iterates ( -- seq )
-    1/20 ns-A flip n*m :> T0
-    T0 1array :> acc!
-    5 [ acc dup last ns-step suffix acc! ] times
-    acc ;
-
-: mfloat ( M -- M' ) [ [ >float ] map ] map ;
-
-: frob ( M -- x ) [ [ sq ] map-sum ] map-sum sqrt ;
-
-:: check-newton-schulz ( -- )
-    ns-A first2 [ first2 ] bi@ :> ( a b c d )
-    a d * b c * - :> det
-    det recip d b neg 2array c neg a 2array 2array n*m :> Ainv
-    ns-iterates :> Ts
-    Ts [ ns-residual ] map :> Es
-    "N.01" "Newton-Schulz" "det(A) = 10" 10 det exact
-    "N.02" "Newton-Schulz" "A^-1 = [[0.3, -0.1], [-0.2, 0.4]]"
-        { { 3/10 -1/10 } { -1/5 2/5 } } Ainv exact
-    "N.03" "Newton-Schulz" "A * A^-1 = I" identity2 ns-A Ainv mdot exact
-    "N.04" "Newton-Schulz" "T0 = 0.05 A^T = [[0.2, 0.1], [0.05, 0.15]]"
-        { { 1/5 1/10 } { 1/20 3/20 } } Ts first exact
-    "N.05" "Newton-Schulz" "E0 = I - A T0 = [[0.15, -0.55], [-0.55, 0.35]]"
-        { { 3/20 -11/20 } { -11/20 7/20 } } Es first exact
-    "N.06" "Newton-Schulz" "||E0||_inf = 0.9" 9/10 Es first matrix-l-infinity-norm exact
-    "N.07" "Newton-Schulz" "E_{n+1} = E_n^2 for n = 0..4 (exact rationals)" t
-        Es 5 head Es rest [ [ dup mdot ] dip = ] 2all? exact
-    "N.08" "Newton-Schulz" "(0.9)^32 ~ 0.0343" 0.0343 0.9 32 ^ 0.00005 approx
-    "N.09" "Newton-Schulz" "||E5||_inf <= (0.9)^32" t
-        Es last matrix-l-infinity-norm 9/10 32 ^ <= exact
-    "N.10" "Newton-Schulz" "T5 ~ [[0.297, -0.093], [-0.194, 0.386]] (3 d.p.)"
-        { { 0.297 -0.093 } { -0.194 0.386 } } Ts last mfloat 0.0005 approx-matrix
-    "N.11" "Newton-Schulz" "T5 = [[0.29980453, -0.09976578], [-0.19968372, 0.39962103]] (8 d.p.)"
-        { { 0.29980453 -0.09976578 } { -0.19968372 0.39962103 } } Ts last mfloat
-        0.000000005 approx-matrix
-    { 1.118034 0.661438 0.428478 0.183511 0.033676 0.001134 } :> table
-    table Es zip [| pair i |
-        pair first2 :> ( doc E )
-        "N.12." i number>string append "Newton-Schulz"
-        "iteration table row " i number>string append
-        " vs Frobenius ||E_n||_F" append
-        doc E frob 0.0000005 approx
-    ] each-index ;
-
-! ------------------------------------------------------------------
 ! Floating point / softmax / attention-gradient section (IEEE doubles)
 ! ------------------------------------------------------------------
 : f32 ( x -- y ) float>bits bits>float ;
@@ -378,24 +321,9 @@ CONSTANT: fd-G { { 0.2 -0.1 } { 0.4 0.3 } { -0.6 0.9 } }
     "F.14" "MatMul" "C = AB: dA = G B^T, dB = A^T G vs central differences, max |diff| <= 1e-6"
         1e-6 matmul-fd-delta dup 1e-6 <= record ;
 
-! ------------------------------------------------------------------
-! BQN N = 15 section
-! ------------------------------------------------------------------
-:: check-n15 ( -- )
-    15 :> N
-    N [0..b) [ N gcd nip 1 = ] filter :> units
-    "B.01" "BQN N=15" "units of (Z/15Z)^x" { 1 2 4 7 8 11 13 14 } units >array exact
-    "B.02" "BQN N=15" "number of units = phi(15) = 8" 8 units length exact
-    "B.03" "BQN N=15" "phi(15) = 8 (engine)" 8 { { 3 1 } { 5 1 } } totient-from-factors exact
-    "B.04" "BQN N=15" "lambda(15) = lcm(2, 4) = 4 (engine)" 4 3 5 carmichael-pq exact
-    "B.05" "BQN N=15" "squares mod 15 of 2, 7, 8, 11, 13, 14 = 4, 4, 4, 1, 4, 1"
-        { 4 4 4 1 4 1 } { 2 7 8 11 13 14 } [ sq N rem ] map exact
-    "B.06" "BQN N=15" "no x with x^2 = 14 (mod 15)" f
-        N [0..b) [ sq N rem 14 = ] any? exact
-    "B.07" "BQN N=15" "e * d mod lambda = 7 * 3 mod 4 = 1" 1 7 3 * 4 rem exact
-    "B.08" "BQN N=15" "d = 7^-1 mod 4 = 3 (engine)" 3 7 4 mod-inverse exact
-    "B.09" "BQN N=15" "theta = arctan(7 / sqrt 15) ~ 1.062 rad" 1.062
-        7 15 sqrt / atan 0.0005 approx ;
+! The BQN and J programs in the research document are not reimplemented
+! here. They are the files in bqn/ and j/ and are run by
+! scripts/run-array-langs.sh.
 
 ! ------------------------------------------------------------------
 ! Driver and report
@@ -406,9 +334,7 @@ CONSTANT: fd-G { { 0.2 -0.1 } { 0.4 0.3 } { -0.6 0.9 } }
     check-table
     check-euclid-traces
     check-p-squared
-    check-newton-schulz
     check-floating-point
-    check-n15
     claims get ;
 
 : failing-claim-ids ( -- ids )

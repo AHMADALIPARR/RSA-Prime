@@ -7,6 +7,9 @@
 
 set -euo pipefail
 FACTOR_BIN="${FACTOR_BIN:-/home/box/factor/factor/factor}"
+# shellcheck source=require-tool.sh
+source "$(cd "$(dirname "$0")" && pwd)/require-tool.sh"
+require_tool factor "$FACTOR_BIN"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)/factor"
 mkdir -p "$(cd "$(dirname "$0")/.." && pwd)/results"
 "$FACTOR_BIN" -roots="$ROOT" -run=rsa-omega.harness

@@ -1,0 +1,7 @@
+BQN: /tmp/CBQN/BQN
+CBQN on commit 588753c83963f5b1e9247bfba9c16758da22a348
+built with FFI, singeli X86_64
+BQN --version exit 0
+jconsole: /tmp/jdist/j9.6/bin/jconsole
+j9.6.3/j64/linux/commercial/www.jsoftware.com/2025-04-05T16:24:35/clang-11-0-0/SLEEF=1
+jconsole version exit 0
