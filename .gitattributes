@@ -1,0 +1,5 @@
+# Keep every file byte-identical across platforms: no line-ending conversion.
+# The sha256 values in MANIFEST.sha256 depend on this.
+* -text
+*.factor linguist-language=Factor
+*.lean linguist-language=Lean

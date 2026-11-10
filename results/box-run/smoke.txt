@@ -1,0 +1,34 @@
+/workspace/rsa-omega-prod/factor/rsa-omega/smoke/smoke.factor
+
+4: :: smoke-main ( -- )
+7:     n 200000 pollard-p1-factor :> g
+                                 ^
+No word named 'pollard-p1-factor' found in current vocabulary search path
+
+(U) [ c-to-factor => ]
+    c-to-factor
+(U) [ [ (get-catchstack) push ] dip call => (get-catchstack) pop* ]
+(O) command-line-startup
+(O) run
+(O) load-vocab
+(O) M\ string require
+(O) M\ vocab (require)
+(O) load-source
+(O) parse-file
+(O) parse-stream
+(O) parse-fresh
+(O) (parse-lines)
+(O) (parse-until)
+(O) execute-parsing
+(O) POSTPONE: ::
+(O) (::)
+(O) parse-definition
+(O) (parse-until)
+(O) no-word
+(O) throw-restarts
+(O) M\ object throw
+(U) [
+        OBJ-CURRENT-THREAD special-object error-thread set-global
+        current-continuation => error-continuation set-global
+        [ original-error set-global ] [ rethrow ] bi
+    ]

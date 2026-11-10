@@ -1,0 +1,32 @@
+⚠ [3/5] Replayed RsaOmega
+warning: RsaOmega.lean:75:4: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp [Int.emod_emod]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: RsaOmega.lean:74:12: This simp argument is unused:
+  Int.add_emod
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RsaOmega.lean:153:30: This simp argument is unused:
+  Nat.add_mod
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ℹ [4/5] Built ResearchConformance (441ms)
+info: ResearchConformance.lean:157:0: 'RsaOmega.Research.roundtrip_3233' does not depend on any axioms
+info: ResearchConformance.lean:158:0: 'RsaOmega.Research.inverse_exists_3233' depends on axioms: [propext, Quot.sound]
+info: ResearchConformance.lean:159:0: 'RsaOmega.Research.isPrimeTD_sound' depends on axioms: [propext, Quot.sound]
+info: ResearchConformance.lean:160:0: 'RsaOmega.Research.row_10403' does not depend on any axioms
+info: ResearchConformance.lean:161:0: 'RsaOmega.Research.erratum_d' does not depend on any axioms
+info: ResearchConformance.lean:162:0: 'RsaOmega.demo_rsa_roundtrip' depends on axioms: [propext,
+ Quot.sound,
+ RsaOmega.demo_rsa_roundtrip._native.native_decide.ax_1_1]
+info: ResearchConformance.lean:163:0: 'RsaOmega.rsa_inversion_general' depends on axioms: [propext, Quot.sound]
+Build completed successfully (5 jobs).
