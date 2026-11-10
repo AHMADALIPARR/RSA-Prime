@@ -348,4 +348,4 @@ superseded by `docs/RESEARCH-DOCUMENT.md`.
 
 ## License
 
-MIT. See `LICENSE`.
+See `LICENSE`.
