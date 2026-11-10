@@ -1,0 +1,22 @@
+⚠ [2/3] Built RsaOmega (358ms)
+warning: RsaOmega.lean:75:4: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp [Int.emod_emod]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+warning: RsaOmega.lean:74:12: This simp argument is unused:
+  Int.add_emod
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: RsaOmega.lean:153:30: This simp argument is unused:
+  Nat.add_mod
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Build completed successfully (3 jobs).

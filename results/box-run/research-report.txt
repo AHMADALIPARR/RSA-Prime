@@ -1,0 +1,562 @@
+PASS I.01 | N = 61 * 53
+      doc    = 3233
+      engine = 3233
+PASS I.02 | 61 and 53 are prime (Baillie-PSW)
+      doc    = { t t }
+      engine = { t t }
+PASS I.03 | phi(N) = 60 * 52
+      doc    = 3120
+      engine = 3120
+PASS I.04 | lambda(N) = lcm(60, 52)
+      doc    = 780
+      engine = 780
+PASS I.05 | gcd(17, 780) = 1
+      doc    = 1
+      engine = 1
+PASS I.06 | 780 = 45(17) + 15
+      doc    = { 45 15 }
+      engine = { 45 15 }
+PASS I.07 | 17 = 1(15) + 2
+      doc    = { 1 2 }
+      engine = { 1 2 }
+PASS I.08 | 15 = 7(2) + 1
+      doc    = { 7 1 }
+      engine = { 7 1 }
+PASS I.09 | 1 = 8(780) - 367(17)
+      doc    = 1
+      engine = 1
+PASS I.10 | extended-gcd(780, 17) coefficients = (8, -367, 1)
+      doc    = { 8 -367 1 }
+      engine = { 8 -367 1 }
+PASS I.11 | d = -367 mod 780 = 413
+      doc    = 413
+      engine = 413
+PASS I.12 | 17 * 413 = 7021
+      doc    = 7021
+      engine = 7021
+PASS I.13 | 7021 = 9(780) + 1
+      doc    = { 9 1 }
+      engine = { 9 1 }
+PASS I.14 | inverse certificate 17 * 413 = 1 (mod 780) validates
+      doc    = t
+      engine = t
+PASS I.15 | c = 65^17 mod 3233 = 2790
+      doc    = 2790
+      engine = 2790
+PASS I.16 | m' = 2790^413 mod 3233 = 65
+      doc    = 65
+      engine = 65
+PASS I.17 | engine rsa-key-consistent? (3233, 17, 413, 61, 53)
+      doc    = t
+      engine = t
+PASS T.n=15.pq | n=15 : p * q = n
+      doc    = 15
+      engine = 15
+PASS T.n=15.prime | n=15 : p, q prime (Miller-Rabin)
+      doc    = { t t }
+      engine = { t t }
+PASS T.n=15.trial | n=15 : trial division up to isqrt(n) finds p
+      doc    = 3
+      engine = 3
+PASS T.n=15.phi | n=15 : phi(n) = (p-1)(q-1)
+      doc    = 8
+      engine = 8
+PASS T.n=15.lambda | n=15 : lambda(n) = lcm(p-1, q-1)
+      doc    = 4
+      engine = 4
+PASS T.n=15.e | n=15 : 1 < e < lambda and gcd(e, lambda) = 1
+      doc    = t
+      engine = t
+PASS T.n=15.d | n=15 : d = e^-1 mod lambda
+      doc    = 3
+      engine = 3
+PASS T.n=15.ed | n=15 : e*d = 1 (mod lambda)
+      doc    = 1
+      engine = 1
+PASS T.n=15.gcdcert | n=15 : gcd certificate for (e, lambda) validates
+      doc    = t
+      engine = t
+PASS T.n=15.roundtrip | n=15 : (m^e)^d = m mod n for every m in [0, n)
+      doc    = 0
+      engine = 0
+PASS T.n=21.pq | n=21 : p * q = n
+      doc    = 21
+      engine = 21
+PASS T.n=21.prime | n=21 : p, q prime (Miller-Rabin)
+      doc    = { t t }
+      engine = { t t }
+PASS T.n=21.trial | n=21 : trial division up to isqrt(n) finds p
+      doc    = 3
+      engine = 3
+PASS T.n=21.phi | n=21 : phi(n) = (p-1)(q-1)
+      doc    = 12
+      engine = 12
+PASS T.n=21.lambda | n=21 : lambda(n) = lcm(p-1, q-1)
+      doc    = 6
+      engine = 6
+PASS T.n=21.e | n=21 : 1 < e < lambda and gcd(e, lambda) = 1
+      doc    = t
+      engine = t
+PASS T.n=21.d | n=21 : d = e^-1 mod lambda
+      doc    = 5
+      engine = 5
+PASS T.n=21.ed | n=21 : e*d = 1 (mod lambda)
+      doc    = 1
+      engine = 1
+PASS T.n=21.gcdcert | n=21 : gcd certificate for (e, lambda) validates
+      doc    = t
+      engine = t
+PASS T.n=21.roundtrip | n=21 : (m^e)^d = m mod n for every m in [0, n)
+      doc    = 0
+      engine = 0
+PASS T.n=77.pq | n=77 : p * q = n
+      doc    = 77
+      engine = 77
+PASS T.n=77.prime | n=77 : p, q prime (Miller-Rabin)
+      doc    = { t t }
+      engine = { t t }
+PASS T.n=77.trial | n=77 : trial division up to isqrt(n) finds p
+      doc    = 7
+      engine = 7
+PASS T.n=77.phi | n=77 : phi(n) = (p-1)(q-1)
+      doc    = 60
+      engine = 60
+PASS T.n=77.lambda | n=77 : lambda(n) = lcm(p-1, q-1)
+      doc    = 30
+      engine = 30
+PASS T.n=77.e | n=77 : 1 < e < lambda and gcd(e, lambda) = 1
+      doc    = t
+      engine = t
+PASS T.n=77.d | n=77 : d = e^-1 mod lambda
+      doc    = 13
+      engine = 13
+PASS T.n=77.ed | n=77 : e*d = 1 (mod lambda)
+      doc    = 1
+      engine = 1
+PASS T.n=77.gcdcert | n=77 : gcd certificate for (e, lambda) validates
+      doc    = t
+      engine = t
+PASS T.n=77.roundtrip | n=77 : (m^e)^d = m mod n for every m in [0, n)
+      doc    = 0
+      engine = 0
+PASS T.n=143.pq | n=143 : p * q = n
+      doc    = 143
+      engine = 143
+PASS T.n=143.prime | n=143 : p, q prime (Miller-Rabin)
+      doc    = { t t }
+      engine = { t t }
+PASS T.n=143.trial | n=143 : trial division up to isqrt(n) finds p
+      doc    = 11
+      engine = 11
+PASS T.n=143.phi | n=143 : phi(n) = (p-1)(q-1)
+      doc    = 120
+      engine = 120
+PASS T.n=143.lambda | n=143 : lambda(n) = lcm(p-1, q-1)
+      doc    = 60
+      engine = 60
+PASS T.n=143.e | n=143 : 1 < e < lambda and gcd(e, lambda) = 1
+      doc    = t
+      engine = t
+PASS T.n=143.d | n=143 : d = e^-1 mod lambda
+      doc    = 43
+      engine = 43
+PASS T.n=143.ed | n=143 : e*d = 1 (mod lambda)
+      doc    = 1
+      engine = 1
+PASS T.n=143.gcdcert | n=143 : gcd certificate for (e, lambda) validates
+      doc    = t
+      engine = t
+PASS T.n=143.roundtrip | n=143 : (m^e)^d = m mod n for every m in [0, n)
+      doc    = 0
+      engine = 0
+PASS T.n=323.pq | n=323 : p * q = n
+      doc    = 323
+      engine = 323
+PASS T.n=323.prime | n=323 : p, q prime (Miller-Rabin)
+      doc    = { t t }
+      engine = { t t }
+PASS T.n=323.trial | n=323 : trial division up to isqrt(n) finds p
+      doc    = 17
+      engine = 17
+PASS T.n=323.phi | n=323 : phi(n) = (p-1)(q-1)
+      doc    = 288
+      engine = 288
+PASS T.n=323.lambda | n=323 : lambda(n) = lcm(p-1, q-1)
+      doc    = 144
+      engine = 144
+PASS T.n=323.e | n=323 : 1 < e < lambda and gcd(e, lambda) = 1
+      doc    = t
+      engine = t
+PASS T.n=323.d | n=323 : d = e^-1 mod lambda
+      doc    = 29
+      engine = 29
+PASS T.n=323.ed | n=323 : e*d = 1 (mod lambda)
+      doc    = 1
+      engine = 1
+PASS T.n=323.gcdcert | n=323 : gcd certificate for (e, lambda) validates
+      doc    = t
+      engine = t
+PASS T.n=323.roundtrip | n=323 : (m^e)^d = m mod n for every m in [0, n)
+      doc    = 0
+      engine = 0
+PASS T.n=899.pq | n=899 : p * q = n
+      doc    = 899
+      engine = 899
+PASS T.n=899.prime | n=899 : p, q prime (Miller-Rabin)
+      doc    = { t t }
+      engine = { t t }
+PASS T.n=899.trial | n=899 : trial division up to isqrt(n) finds p
+      doc    = 29
+      engine = 29
+PASS T.n=899.phi | n=899 : phi(n) = (p-1)(q-1)
+      doc    = 840
+      engine = 840
+PASS T.n=899.lambda | n=899 : lambda(n) = lcm(p-1, q-1)
+      doc    = 420
+      engine = 420
+PASS T.n=899.e | n=899 : 1 < e < lambda and gcd(e, lambda) = 1
+      doc    = t
+      engine = t
+PASS T.n=899.d | n=899 : d = e^-1 mod lambda
+      doc    = 191
+      engine = 191
+PASS T.n=899.ed | n=899 : e*d = 1 (mod lambda)
+      doc    = 1
+      engine = 1
+PASS T.n=899.gcdcert | n=899 : gcd certificate for (e, lambda) validates
+      doc    = t
+      engine = t
+PASS T.n=899.roundtrip | n=899 : (m^e)^d = m mod n for every m in [0, n)
+      doc    = 0
+      engine = 0
+PASS T.n=1763.pq | n=1763 : p * q = n
+      doc    = 1763
+      engine = 1763
+PASS T.n=1763.prime | n=1763 : p, q prime (Miller-Rabin)
+      doc    = { t t }
+      engine = { t t }
+PASS T.n=1763.trial | n=1763 : trial division up to isqrt(n) finds p
+      doc    = 41
+      engine = 41
+PASS T.n=1763.phi | n=1763 : phi(n) = (p-1)(q-1)
+      doc    = 1680
+      engine = 1680
+PASS T.n=1763.lambda | n=1763 : lambda(n) = lcm(p-1, q-1)
+      doc    = 840
+      engine = 840
+PASS T.n=1763.e | n=1763 : 1 < e < lambda and gcd(e, lambda) = 1
+      doc    = t
+      engine = t
+PASS T.n=1763.d | n=1763 : d = e^-1 mod lambda
+      doc    = 611
+      engine = 611
+PASS T.n=1763.ed | n=1763 : e*d = 1 (mod lambda)
+      doc    = 1
+      engine = 1
+PASS T.n=1763.gcdcert | n=1763 : gcd certificate for (e, lambda) validates
+      doc    = t
+      engine = t
+PASS T.n=1763.roundtrip | n=1763 : (m^e)^d = m mod n for every m in [0, n)
+      doc    = 0
+      engine = 0
+PASS T.n=10403.pq | n=10403 : p * q = n
+      doc    = 10403
+      engine = 10403
+PASS T.n=10403.prime | n=10403 : p, q prime (Miller-Rabin)
+      doc    = { t t }
+      engine = { t t }
+PASS T.n=10403.trial | n=10403 : trial division up to isqrt(n) finds p
+      doc    = 101
+      engine = 101
+PASS T.n=10403.phi | n=10403 : phi(n) = (p-1)(q-1)
+      doc    = 10200
+      engine = 10200
+PASS T.n=10403.lambda | n=10403 : lambda(n) = lcm(p-1, q-1)
+      doc    = 5100
+      engine = 5100
+PASS T.n=10403.e | n=10403 : 1 < e < lambda and gcd(e, lambda) = 1
+      doc    = t
+      engine = t
+PASS T.n=10403.d | n=10403 : d = e^-1 mod lambda
+      doc    = 3643
+      engine = 3643
+PASS T.n=10403.ed | n=10403 : e*d = 1 (mod lambda)
+      doc    = 1
+      engine = 1
+PASS T.n=10403.gcdcert | n=10403 : gcd certificate for (e, lambda) validates
+      doc    = t
+      engine = t
+PASS T.n=10403.roundtrip | n=10403 : (m^e)^d = m mod n for every m in [0, n)
+      doc    = 0
+      engine = 0
+PASS E.899.1 | 30^2 - 1 = 899
+      doc    = 899
+      engine = 899
+PASS E.899.2 | Fermat engine factors 899 -> 29
+      doc    = 29
+      engine = 29
+PASS E.899.3 | 420 = 38(11) + 2
+      doc    = { 38 2 }
+      engine = { 38 2 }
+PASS E.899.4 | 11 = 5(2) + 1
+      doc    = { 5 1 }
+      engine = { 5 1 }
+PASS E.899.5 | 1 = 191(11) - 5(420)
+      doc    = 1
+      engine = 1
+PASS E.899.6 | 11 * 191 = 2101 = 5(420) + 1
+      doc    = { 2101 5 1 }
+      engine = { 2101 5 1 }
+PASS E.1763.1 | 42^2 - 1 = 1763
+      doc    = 1763
+      engine = 1763
+PASS E.1763.2 | Fermat engine factors 1763 -> 41
+      doc    = 41
+      engine = 41
+PASS E.1763.3 | 840 = 76(11) + 4
+      doc    = { 76 4 }
+      engine = { 76 4 }
+PASS E.1763.4 | 11 = 2(4) + 3
+      doc    = { 2 3 }
+      engine = { 2 3 }
+PASS E.1763.5 | 4 = 1(3) + 1
+      doc    = { 1 1 }
+      engine = { 1 1 }
+PASS E.1763.6 | 1 = 3(840) - 229(11)
+      doc    = 1
+      engine = 1
+PASS E.1763.7 | -229 = 611 (mod 840)
+      doc    = 611
+      engine = 611
+PASS E.1763.8 | 11 * 611 = 6721 = 8(840) + 1
+      doc    = { 6721 8 1 }
+      engine = { 6721 8 1 }
+PASS E.10403.1 | sqrt(10403) ~ 101.99 (as a 2 d.p. truncation)
+      doc    = 101.99
+      engine = 101.99509792141973
+PASS E.10403.2 | 5100 = 728(7) + 4
+      doc    = { 728 4 }
+      engine = { 728 4 }
+PASS E.10403.3 | 7 = 1(4) + 3
+      doc    = { 1 3 }
+      engine = { 1 3 }
+PASS E.10403.4 | 4 = 1(3) + 1
+      doc    = { 1 1 }
+      engine = { 1 1 }
+PASS E.10403.5 | 1 = 2(5100) - 1457(7)
+      doc    = 1
+      engine = 1
+PASS E.10403.6 | -1457 = 3643 (mod 5100)
+      doc    = 3643
+      engine = 3643
+PASS E.10403.7 | 7 * 3643 = 25501 = 5(5100) + 1
+      doc    = { 25501 5 1 }
+      engine = { 25501 5 1 }
+PASS P.01 | 65537^2 = 4295098369
+      doc    = 4295098369
+      engine = 4295098369
+PASS P.02 | 65537 is prime (Baillie-PSW)
+      doc    = t
+      engine = t
+PASS P.03 | 65537 = 2^16 + 1 (Fermat prime F4)
+      doc    = 65537
+      engine = 65537
+PASS P.04 | trial division finds p = 65537
+      doc    = 65537
+      engine = 65537
+PASS P.05 | engine perfect-power detects 65537^2
+      doc    = { 65537 2 }
+      engine = { 65537 2 }
+FAIL P.06 | table/proof: phi(p^2) = p(p-1) = 4294967296
+      doc    = 4294967296
+      engine = 4295032832
+FAIL P.07 | table/proof: lambda(p^2) = 4294967296
+      doc    = 4294967296
+      engine = 4295032832
+FAIL P.08 | counterexample section: corrected phi(p^2) = p(p-1) = 4294901760
+      doc    = 4294901760
+      engine = 4295032832
+FAIL P.09 | 65537 * 65536 = 4294967296 (product as printed in table/proof)
+      doc    = 4294967296
+      engine = 4295032832
+FAIL P.10 | counterexample section: (p-1)(q-1) = 65536^2 = 4294836225
+      doc    = 4294836225
+      engine = 4294967296
+PASS P.10b | 4294967296 printed as phi/lambda equals (p-1)^2 = 65536^2
+      doc    = 4294967296
+      engine = 4294967296
+PASS P.10c | 4294901760 equals 65536 * 65535 (not p(p-1))
+      doc    = 4294901760
+      engine = 4294901760
+PASS P.10d | 4294836225 equals 65535^2 (not 65536^2)
+      doc    = 4294836225
+      engine = 4294836225
+PASS P.11 | gcd(3, 4294967296) = 1
+      doc    = 1
+      engine = 1
+PASS P.12 | 4294967296 = 1431655765(3) + 1
+      doc    = { 1431655765 1 }
+      engine = { 1431655765 1 }
+PASS P.13 | 3 * 2863311531 = 8589934593 = 2(4294967296) + 1
+      doc    = { 8589934593 2 1 }
+      engine = { 8589934593 2 1 }
+FAIL P.14 | d = 2863311531 satisfies 3d = 1 (mod lambda(p^2))
+      doc    = 1
+      engine = 4294901761
+FAIL P.15 | d = 3^-1 mod lambda(p^2): doc prints 2863311531, engine computes the true inverse
+      doc    = 2863311531
+      engine = 1431677611
+FAIL P.16 | doc key (e=3, d=2863311531) decrypts m=42 on n=65537^2
+      doc    = 42
+      engine = 1655333588
+PASS P.16b | engine inverse d = 3^-1 mod lambda(p^2) decrypts m=42
+      doc    = 42
+      engine = 42
+PASS P.16c | engine inverse: 3 * d = 1 (mod lambda(p^2))
+      doc    = 1
+      engine = 1
+PASS P.17 | engine check-rsa-key rejects p = q (p-ne-q slot)
+      doc    = f
+      engine = f
+PASS N.01 | det(A) = 10
+      doc    = 10
+      engine = 10
+PASS N.02 | A^-1 = [[0.3, -0.1], [-0.2, 0.4]]
+      doc    = { { 3/10 -1/10 } { -1/5 2/5 } }
+      engine = { { 3/10 -1/10 } { -1/5 2/5 } }
+PASS N.03 | A * A^-1 = I
+      doc    = { { 1 0 } { 0 1 } }
+      engine = { { 1 0 } { 0 1 } }
+PASS N.04 | T0 = 0.05 A^T = [[0.2, 0.1], [0.05, 0.15]]
+      doc    = { { 1/5 1/10 } { 1/20 3/20 } }
+      engine = { { 1/5 1/10 } { 1/20 3/20 } }
+PASS N.05 | E0 = I - A T0 = [[0.15, -0.55], [-0.55, 0.35]]
+      doc    = { { 3/20 -11/20 } { -11/20 7/20 } }
+      engine = { { 3/20 -11/20 } { -11/20 7/20 } }
+PASS N.06 | ||E0||_inf = 0.9
+      doc    = 9/10
+      engine = 9/10
+PASS N.07 | E_{n+1} = E_n^2 for n = 0..4 (exact rationals)
+      doc    = t
+      engine = t
+PASS N.08 | (0.9)^32 ~ 0.0343
+      doc    = 0.0343
+      engine = 0.03433683820292515
+PASS N.09 | ||E5||_inf <= (0.9)^32
+      doc    = t
+      engine = t
+FAIL N.10 | T5 ~ [[0.297, -0.093], [-0.194, 0.386]] (3 d.p.)
+      doc    = { { 0.297 -0.093 } { -0.194 0.386 } }
+      engine = {
+    { 0.2998045287793502 -0.09976578389760107 }
+    { -0.19968372092116624 0.399621030385606 }
+}
+PASS N.11 | T5 = [[0.29980453, -0.09976578], [-0.19968372, 0.39962103]] (8 d.p.)
+      doc    = { { 0.29980453 -0.09976578 } { -0.19968372 0.39962103 } }
+      engine = {
+    { 0.2998045287793502 -0.09976578389760107 }
+    { -0.19968372092116624 0.399621030385606 }
+}
+FAIL N.12.0 | iteration table row 0 vs Frobenius ||E_n||_F
+      doc    = 1.118034
+      engine = 0.8660254037844386
+PASS N.12.1 | iteration table row 1 vs Frobenius ||E_n||_F
+      doc    = 0.661438
+      engine = 0.6614378277661477
+PASS N.12.2 | iteration table row 2 vs Frobenius ||E_n||_F
+      doc    = 0.428478
+      engine = 0.42847841252506524
+PASS N.12.3 | iteration table row 3 vs Frobenius ||E_n||_F
+      doc    = 0.183511
+      engine = 0.18351061947728664
+PASS N.12.4 | iteration table row 4 vs Frobenius ||E_n||_F
+      doc    = 0.033676
+      engine = 3.3676140547122084e-2
+PASS N.12.5 | iteration table row 5 vs Frobenius ||E_n||_F
+      doc    = 0.001134
+      engine = 1.1340824421494722e-3
+PASS F.01 | FP32 machine epsilon ~ 1.19e-7
+      doc    = 0.000000119
+      engine = 1/8388608
+PASS F.02 | FP32 bound eps^(2/3) ~ 2.4e-5
+      doc    = 0.000024
+      engine = 2.422181780957337e-5
+PASS F.03 | FP64 machine epsilon ~ 2.22e-16
+      doc    = 2.22e-16
+      engine = 1/4503599627370496
+PASS F.04 | FP64 bound eps^(2/3) ~ 3.6e-11 (as a 2 s.f. truncation)
+      doc    = 0.000000000036
+      engine = 3.666852862501036e-11
+PASS F.05 | softmax(<10, -10>) second entry ~ 2e-9
+      doc    = 0.000000002
+      engine = 2.0611536181902033e-9
+PASS F.06 | softmax(<100, -100>) second entry flushes to 0.0 in FP32
+      doc    = 0.0
+      engine = 0.0
+PASS F.07 | softmax(<100, -100>) second entry is NOT 0.0 in FP64
+      doc    = t
+      engine = t
+PASS F.08 | 0.0 * +inf = NaN
+      doc    = t
+      engine = t
+PASS F.09 | 1.0 + NaN = NaN
+      doc    = t
+      engine = t
+PASS F.10 | D = <1.0, 0.0> . <1.0, inf> is NaN
+      doc    = t
+      engine = t
+PASS F.11 | J_s symmetric and J_s^T v = p (.) (v - <p,v>) (max |diff| <= 1e-15)
+      doc    = 0.000000000000001
+      engine = 5.551115123125783e-17
+PASS F.12 | analytic dQ, dK, dV vs central differences (h = eps^(1/3)), max |diff| <= 1e-6
+      doc    = 0.000001
+      engine = 5.364694799503411e-12
+PASS F.13 | same check against the document's FP64 bound eps ~ 3.6e-11
+      doc    = 0.000000000036
+      engine = 5.364694799503411e-12
+PASS F.14 | C = AB: dA = G B^T, dB = A^T G vs central differences, max |diff| <= 1e-6
+      doc    = 0.000001
+      engine = 5.050015960961218e-12
+PASS B.01 | units of (Z/15Z)^x
+      doc    = { 1 2 4 7 8 11 13 14 }
+      engine = { 1 2 4 7 8 11 13 14 }
+PASS B.02 | number of units = phi(15) = 8
+      doc    = 8
+      engine = 8
+PASS B.03 | phi(15) = 8 (engine)
+      doc    = 8
+      engine = 8
+PASS B.04 | lambda(15) = lcm(2, 4) = 4 (engine)
+      doc    = 4
+      engine = 4
+PASS B.05 | squares mod 15 of 2, 7, 8, 11, 13, 14 = 4, 4, 4, 1, 4, 1
+      doc    = { 4 4 4 1 4 1 }
+      engine = { 4 4 4 1 4 1 }
+PASS B.06 | no x with x^2 = 14 (mod 15)
+      doc    = f
+      engine = f
+PASS B.07 | e * d mod lambda = 7 * 3 mod 4 = 1
+      doc    = 1
+      engine = 1
+PASS B.08 | d = 7^-1 mod 4 = 3 (engine)
+      doc    = 3
+      engine = 3
+FAIL B.09 | theta = arctan(7 / sqrt 15) ~ 1.062 rad
+      doc    = 1.062
+      engine = 1.0654358165107394
+CLAIMS CHECKED: 180
+PASS: 169
+FAIL: 11
+FAILING IDS: {
+    "P.06"
+    "P.07"
+    "P.08"
+    "P.09"
+    "P.10"
+    "P.14"
+    "P.15"
+    "P.16"
+    "N.10"
+    "N.12.0"
+    "B.09"
+}

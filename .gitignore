@@ -1,0 +1,9 @@
+# Lean / Lake build output
+.lake/
+lean/.lake/
+tests/lean/.lake/
+# Factor images saved locally
+*.image
+# editor / OS noise
+*~
+.DS_Store

@@ -1,0 +1,12 @@
+step	exit_code	wall_ms
+manifest-verify	0	4
+unit-tests	0	4726
+unit-tests-strict	0	4728
+research-tests	0	3047
+research-report	0	3111
+bench-run	0	8860
+bench-run-repeat-2	0	9110
+bench-run-repeat-3	0	8995
+smoke	1	936
+lake-build	0	958
+lake-build-research	0	920

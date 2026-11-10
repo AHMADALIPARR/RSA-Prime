@@ -1,0 +1,57 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify preserved files are byte-identical
+        run: sha256sum -c MANIFEST.sha256
+
+  factor:
+    runs-on: ubuntu-latest
+    env:
+      FACTOR_VERSION: "0.102"
+      FACTOR_SHA256: 567239b0b5fe4222d26bb871ad4c6b6f00f7dc885e149191d4fef7197e280551
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Factor
+        run: |
+          curl -fsSL -o factor.tar.gz \
+            "https://downloads.factorcode.org/releases/${FACTOR_VERSION}/factor-linux-x86-64-${FACTOR_VERSION}.tar.gz"
+          echo "${FACTOR_SHA256}  factor.tar.gz" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/factor-dist"
+          tar xzf factor.tar.gz -C "$RUNNER_TEMP/factor-dist"
+          echo "FACTOR_BIN=$RUNNER_TEMP/factor-dist/factor/factor" >> "$GITHUB_ENV"
+      - name: Engine unit tests (fails on any failing test)
+        run: ./scripts/run-unit-tests-strict.sh
+      - name: Research conformance tests
+        run: ./scripts/run-research-tests.sh
+      - name: Research conformance report
+        run: ./scripts/run-research-report.sh "$RUNNER_TEMP/research-claims.json"
+      - name: Benchmark harness
+        run: ./scripts/run-bench-repo.sh "$RUNNER_TEMP/results.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: factor-results
+          path: |
+            ${{ runner.temp }}/research-claims.json
+            ${{ runner.temp }}/results.json
+
+  lean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build original Lean proofs
+        run: cd lean && lake build
+      - name: Build research conformance proofs
+        run: cd tests/lean && lake build
