@@ -21,7 +21,7 @@ edited; all 37 preserved files are verified by `MANIFEST.sha256`.
 - `scripts/capture-box-run.sh`, `scripts/summarize-bench.py`.
 - `results/box-run/`: logs, exit codes and benchmark JSON from three runs on
   the build machine.
-- `Makefile`, `.github/workflows/ci.yml`, `LICENSE` (AGPL-3.0-only / GNU Affero General Public License v3.0), `.gitignore`,
+- `Makefile`, `LICENSE` (AGPL-3.0-only / GNU Affero General Public License v3.0), `.gitignore`,
   `.gitattributes`, `docs/`.
 
 ### Moved (content unchanged)

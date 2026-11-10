@@ -9,7 +9,7 @@ from the task brief. That note is now out of date:
   `research/RSA-OMEGA-RESEARCH.md` (46,922 bytes, 826 lines,
   sha256 `7a7edb15bd80364a4ee07ab2b7cc9b2505d309e970fedfe88b73ea537c719610`).
   It is the author's own work and is not edited in any way. Its hash is
-  listed in `MANIFEST.sha256` and checked by `make verify` and by CI.
+  listed in `MANIFEST.sha256` and checked by `make verify`.
 * `SPEC.md` and `SPEC-original.txt` are kept unchanged as the
   implementation brief the engine was written against.
 * The numeric claims that are not the BQN or J programs (154 checks)
