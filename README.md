@@ -16,7 +16,7 @@ The repository combines three things:
 2. **The author's research document**, verbatim, at
    `research/RSA-OMEGA-RESEARCH.md`.
 3. **New production scaffolding**: research conformance tests in Factor
-   and Lean, strict test runners, a benchmark wrapper, CI, a Makefile and
+   and Lean, strict test runners, a benchmark wrapper, a Makefile and
    documentation. Every result quoted below comes from a run on the build
    machine on 2026-11-10 at about 06:00 PST, with the raw logs in
    `results/box-run/`.
@@ -77,7 +77,7 @@ This is a research and teaching toolkit. Its rules:
 | `results/box-run/` | fresh logs, JSON and machine information from the build machine | new |
 | `docs/` | conformance report, provenance, research-document note | new |
 | `MANIFEST.sha256` | sha256 of all 37 preserved files | new |
-| `Makefile`, `.github/workflows/ci.yml` | entry points and CI | new |
+| `Makefile` | entry points | new |
 
 ## Requirements
 
@@ -335,11 +335,8 @@ example, ECM 1364.376 ms and QS-100 700.662 ms).
   `pow-signed` and `common-modulus-attack`.
 * **Benchmarks cover one modulus per row**, from fixed seeds. They are not
   statistical runtime distributions.
-* **CI has not run on GitHub yet.** `.github/workflows/ci.yml` installs the
-  official Factor 0.102 Linux release (checksum pinned from
-  downloads.factorcode.org) and Lean via elan. The build machine has no
-  `make` binary, so the `Makefile` targets were run here as their
-  underlying script commands.
+* The build machine has no `make` binary, so the `Makefile` targets were
+  run here as their underlying script commands.
 
 ## Provenance
 

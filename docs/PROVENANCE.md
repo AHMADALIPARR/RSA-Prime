@@ -37,7 +37,7 @@ every platform.
 
 Everything not in `MANIFEST.sha256` was added and is new code or
 documentation: `README.md`, `CHANGELOG.md`, `LICENSE`, `Makefile`,
-`.gitignore`, `.gitattributes`, `.github/workflows/ci.yml`, `docs/*.md`
+`.gitignore`, `.gitattributes`, `docs/*.md`
 (except `README-original.md`), `scripts/run-unit-tests-strict.sh`,
 `scripts/run-research-tests.sh`, `scripts/run-research-report.sh`,
 `scripts/run-bench-repo.sh`, `scripts/capture-box-run.sh`,
